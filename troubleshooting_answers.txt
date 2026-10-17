@@ -1,0 +1,40 @@
+Troubleshooting & Emergency Fixes
+
+1. The "Oops, wrong file" Problem:
+git restore --staged .env (Removes .env from the staging area while preserving local edits).
+
+2. The "Typo in the message" Problem:
+git commit --amend -m "Corrected commit message here" (Updates the message of the most recent commit without creating a new one).
+
+3. The "Forgot a file" Problem:
+git add styles.css
+git commit --amend --no-edit 
+(Stages styles.css and combines it into the last commit silently).
+
+4. The "I hate these changes" Problem:
+git restore index.html (Discards unstaged changes in index.html and restores it to the last committed state).
+
+5. The "Wrong Branch" Problem:
+git branch feature-branch
+git reset --hard HEAD~3
+git checkout feature-branch 
+(Saves the last 3 commits to a new branch, resets main back 3 commits, and switches to the new branch).
+
+6. The "Detached HEAD" Problem:
+git switch -c recovery-branch (Creates and checks out a new branch pointing to the current commit to preserve changes).
+
+7. The "Undo a pushed mistake" Problem:
+git revert <commit-hash>
+git push origin main
+(Creates a new inverse commit that safely undoes changes without rewriting remote history).
+
+8. The "Accidental Deletion" Problem:
+git reflog
+git checkout -b <branch-name> <commit-hash> 
+(Locates the deleted branch's last commit hash via reflog and restores the branch from it).
+
+9. The "Ghost Files" Problem:
+git add -u (Stages all tracked file modifications and deletions at once).
+
+10. The "Pushed to the void" Problem:
+git push origin --delete testing-junk (Deletes the unwanted branch from the remote repository on GitHub).
